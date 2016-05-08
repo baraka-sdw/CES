@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdw.mapper.CollectMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
+		/> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	<!-- 以下与实体类的中字段一致 -->
+	<sql id="selectId">
+		 c.id,
+	    (select object from evaluate  where id=c.evaluate) object,
+		(select cardename from carde where id=c.carde) cardename,
+		(select evaluateName from evaluate where id=c.evaluate) evaluateName,
+		(select evaluateCode from evaluate where id=c.evaluate)evaluateCode,
+		(select name from target where id=c.name) name,
+		c.target1,
+		c.target2,
+		c.target3,
+		c.target4
+	</sql>
+
+	<select id="findCollectPage" resultType="com.sdw.entity.CollectFormMap">
+		select
+		<include refid="selectId" />
+		from collect c
+		left join evaluate a on a.id=c.evaluate
+		left join carde b on b.id=c.carde
+		left join target d on d.id=c.name
+		where 1 = 1
+		<if test="cardename != null and cardename != ''">
+		and b.cardename like '%${cardename}%'
+		</if>
+		<if test="object != null and object != ''">
+		and a.object like '%${object}%'
+		</if>
+		<if test="name != null and name != ''">
+		and d.name like '%${name}%'
+		</if>
+		<if test="evaluateName != null and evaluateName != ''">
+		and a.evaluateName like '%${evaluateName}%'
+		</if>
+		<if test="column != null">
+          order by ${column} ${sort}
+        </if>
+	</select>
+</mapper>

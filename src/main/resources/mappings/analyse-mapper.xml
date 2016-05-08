@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdw.mapper.AnalyseMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
+		/> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	<!-- 以下与实体类的中字段一致 -->
+	<sql id="selectId">
+	  c.id,
+	  count(c.id) total,
+	  c.carde,
+	  (select cardename from carde where id=c.carde) cardename,
+	  avg(c.target1) target1,
+	  avg(c.target2) target2,
+	  avg(c.target3) target3,
+	  avg(c.target4) target4,
+	  target1+target2+target3+target4 as target
+	</sql>
+
+	<select id="findCollectPage" resultType="com.sdw.entity.AnalyseFormMap">
+		select
+		<include refid="selectId" />
+		from collect c
+		left join carde a on a.id=c.carde
+		where 1 = 1
+		<if test="cardename != null and cardename != ''">
+		and a.cardename like '%${cardename}%'
+		</if>
+		<if test="column != null">
+          order by ${column} ${sort}
+        </if>
+        group by c.carde
+	</select>
+	
+	<select id="findCollect" resultType="com.sdw.entity.AnalyseFormMap">
+	    select
+		<include refid="selectId" />
+		from collect c
+		group by c.carde
+	</select>
+	
+</mapper>
