@@ -96,6 +96,7 @@
     <servlet-name>default</servlet-name>
     <url-pattern>*.woff</url-pattern>
   </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>login.shtml</welcome-file>
   </welcome-file-list>

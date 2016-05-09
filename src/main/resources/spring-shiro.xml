@@ -80,7 +80,7 @@
     		/login.shtml = anon
 			/denied.jsp = anon
 			/install.shtml = anon
-			/sdw.shtml = anon
+			/captcha/validate.shtml = anon
 			</value>
 		</property>
 	</bean>

@@ -111,7 +111,15 @@ public class BackgroundController extends BaseController {
 			request.setAttribute("error", "登录异常，请联系管理员！");
 			return "/login";
 		}
-		return "redirect:index.shtml";
+		String input=request.getParameter("kaptchaValidate");
+		String kaptchaExpected = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY); 
+		if(kaptchaExpected.equalsIgnoreCase(input)){
+			return "redirect:index.shtml";
+		}else{
+			request.setAttribute("error", "验证码不正确！");
+			return "/login";
+		}
+		
 	}
 
 	/**

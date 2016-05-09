@@ -252,6 +252,7 @@
 			<artifactId>ehcache-core</artifactId>
 			<version>2.5.0</version>
 		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>lanyuan-notebook-3.1v</finalName>

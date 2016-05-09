@@ -13,10 +13,24 @@
 <link rel="stylesheet"	href="${pageContext.servletContext.contextPath}/admin_files/min.css">
 <link rel="stylesheet"	href="${pageContext.servletContext.contextPath }/admin_files/login.css">
 <link	href="${pageContext.servletContext.contextPath }/admin_files/css.css"	rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.servletContext.contextPath }/js/jquery/jquery-1.8.3.js"></script>
+
 <!--[if lt IE 9]> 
 	<script src="${ctx}/js/jquery/ie/html5shiv.js"></script> 
 	<script src="${ctx}/js/jquery/ie/respond.min.js"></script>
 <![endif]-->
+<style type="text/css">
+      #error{
+    background: none repeat scroll 0 0 #FFFCC7;
+    border: 1px solid #FFC340;
+    font-size: 12px;
+    color:red;
+    padding: 4px 8px;
+    width: 200px;
+    display: none;
+    text-align: center;
+    }
+</style>
 </head>
 <body onload="javascript:to_top()" 
 	style="background-image: url('${pageContext.servletContext.contextPath }/admin_files/9.jpg');margin-top:0px;background-repeat:no-repeat;background-size: 100% auto;">
@@ -39,12 +53,13 @@
 				</table>
 
 			</div>
+			<div id="error" style="width: 100%; margin-top: 2px;">123</div>
 			<div class="control-group">
 				<div class="controls">
 					<div class="main_input_box">
 						<span class="add-on bg_ly" style="background: #28b779"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/account_1.png"
-							alt="请输入账号.."></span><input type="text" placeholder="请输入用户名" name="username" value="admin"
+							alt="请输入账号.."></span><input type="text" placeholder="请输入用户名" name="username" value="sdw"
 							style="height: 32px; margin-bottom: 0px;"/>
 					</div>
 				</div>
@@ -66,8 +81,8 @@
 					<div class="main_input_my">
 						<span class="add-on bg_ly"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/22.png"
-							alt="请输入验证码.."></span><input type="text" placeholder="请输入验证码" name="captcha" value=""
-							style="height: 32px; margin-bottom: 0px;"/><img onclick="this.src='${pageContext.servletContext.contextPath }/captcha.shtml?d='+new Date().getTime()" src="captcha" style="height: 32px;"/>
+							alt="请输入验证码.."></span><input type="text" placeholder="请输入验证码" name="kaptchaValidate" value=""
+							style="height: 32px; margin-bottom: 0px;"/><img onclick="this.src='${pageContext.servletContext.contextPath }/captcha/validate.shtml?d='+new Date().getTime()" src="${pageContext.servletContext.contextPath }/captcha/validate.shtml" style="height: 32px;"/>
 					</div>
 				</div>
 			</div>
@@ -87,8 +102,9 @@
 	</div>
 	<script type="text/javascript">
 		if ("${error}" != "") {
-			alert("${error}");
-		};
+			$("#error").css('display','block');
+			$("#error").text("${error}")
+		}
 		function checkUserForm() {
 			document.loginform.submit();
 		}
@@ -98,5 +114,6 @@
 		    }
 		}
 	</script>
+	
 </body>
 </html>
