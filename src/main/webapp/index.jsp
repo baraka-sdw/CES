@@ -1,42 +1,45 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<html lang="en"
-	class="app">
+<html lang="en" class="app">
 <head>
-    
+
 <%@include file="/common/common.jspf"%>
 <script type="text/javascript">
 	$(function() {
-    var winwidth = $("body").width();
-    if(winwidth<770){
-      $("#nav ul.lt li").click(function(){
-        $("#nav").removeClass("nav-off-screen");
-     });
-    }
+		var winwidth = $("body").width();
+		if (winwidth < 770) {
+			$("#nav ul.lt li").click(function() {
+				$("#nav").removeClass("nav-off-screen");
+			});
+		}
 		var tb = $("#loadhtml");
 		tb.html(CommnUtil.loadingImg());
-		tb.load(rootPath+"/welcome.jsp");
-		$("[nav-n]").each(function () {
-				$(this).bind("click",function(){
-						var nav = $(this).attr("nav-n");
-						var sn = nav.split(",");
-						var html = '<li><i class="fa fa-home"></i>';
-						html+='<a href="index.shtml">Home</a></li>';
-						for(var i=0;i<2;i++){
-							html+='<li><a href="javascript:void(0)">'+sn[i]+'</a></li>';
-						}
-						$("#topli").html(html);
-						var tb = $("#loadhtml");
-						tb.html(CommnUtil.loadingImg());
-						tb.load(rootPath+sn[2]);
+		tb.load(rootPath + "/welcome.jsp");
+		$("[nav-n]").each(
+				function() {
+					$(this).bind(
+							"click",
+							function() {
+								var nav = $(this).attr("nav-n");
+								var sn = nav.split(",");
+								var html = '<li><i class="fa fa-home"></i>';
+								html += '<a href="index.shtml">Home</a></li>';
+								for (var i = 0; i < 2; i++) {
+									html += '<li><a href="javascript:void(0)">'
+											+ sn[i] + '</a></li>';
+								}
+								$("#topli").html(html);
+								var tb = $("#loadhtml");
+								tb.html(CommnUtil.loadingImg());
+								tb.load(rootPath + sn[2]);
+							});
 				});
-			});
-		});
+	});
 </script>
 </head>
 <body class="" style="">
 	<section class="vbox">
 		<header class="bg-dark dk header navbar navbar-fixed-top-xs">
-			<div class="navbar-header aside-md" >
+			<div class="navbar-header aside-md">
 				<a class="btn btn-link visible-xs"
 					data-toggle="class:nav-off-screen,open" data-target="#nav,html">
 					<i class="fa fa-bars"></i>
@@ -53,7 +56,8 @@
 						class="fa fa-building-o"></i> <span class="font-bold">账号</span>
 				</a>
 					<section
-						class="dropdown-menu aside-xl on animated fadeInLeft no-borders lt"角色>
+						class="dropdown-menu aside-xl on animated fadeInLeft no-borders lt"
+						角色>
 						<div class="wrapper lter m-t-n-xs">
 							<a href="index.shtml#" class="thumb pull-left m-r"> <img
 								src="${ctx}/notebook/notebook_files/avatar.jpg"
@@ -61,7 +65,7 @@
 							</a>
 							<div class="clear">
 								<a href="index.shtml#"><span class="text-white font-bold">宋德伟
-										</span></a> <small class="block">Art Director</small> <a
+								</span></a> <small class="block">Art Director</small> <a
 									href="index.shtml#" class="btn btn-xs btn-success m-t-xs">详细资料</a>
 							</div>
 						</div>
@@ -87,7 +91,7 @@
 						</div>
 					</section></li>
 				<li>
-					<div class="m-t m-l">
+					<div class="m-t m-l navbar-right">
 						<a href="index.shtml#"
 							class="dropdown-toggle btn btn-xs btn-primary" title="更新"><i
 							class="fa fa-long-arrow-up"></i></a>
@@ -95,6 +99,13 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user">
+			
+			    <li>
+					<div style="margin-top: 2px">
+ 						<iframe src="clock.html" frameborder="0"scrolling="no"allowtransparency="true" width="146px" height="36px"> </iframe>
+					</div>
+				</li>
+			
 				<li class="hidden-xs"><a href="index.shtml#"
 					class="dropdown-toggle dk" data-toggle="dropdown"> <i
 						class="fa fa-bell"></i> <span
@@ -211,15 +222,16 @@
 														<i class="fa fa-book icon"> <b class="bg-info"></b>
 														</i>
 													</c:if> <c:if test="${s.index==4}">
-														<i class="fa fa-fighter-jet icon"> <b class="bg-success"></b>
+														<i class="fa fa-fighter-jet icon"> <b
+															class="bg-success"></b>
 														</i>
-												    </c:if> <c:if test="${s.index==5}">
+													</c:if> <c:if test="${s.index==5}">
 														<i class="fa fa-umbrella icon"> <b class="bg-warning"></b>
 														</i>
-												    </c:if> <c:if test="${s.index==6}">
+													</c:if> <c:if test="${s.index==6}">
 														<i class="fa fa-suitcase icon"> <b class="bg-dark"></b>
 														</i>
-														
+
 													</c:if> <span class="pull-right"> <i
 														class="fa fa-angle-down text"></i> <i
 														class="fa fa-angle-up text-active"></i>
@@ -228,9 +240,10 @@
 
 												<ul class="nav lt">
 													<c:forEach var="kc" items="${key.children}">
-														<li class="active"><a
-															href="javascript:void(0)"
-															class="active" nav-n="${key.name},${kc.name},${kc.resUrl}?id=${kc.id}"> <i class="fa fa-angle-right"></i> <span>${kc.name}</span>
+														<li class="active"><a href="javascript:void(0)"
+															class="active"
+															nav-n="${key.name},${kc.name},${kc.resUrl}?id=${kc.id}">
+																<i class="fa fa-angle-right"></i> <span>${kc.name}</span>
 														</a></li>
 													</c:forEach>
 												</ul></li>
@@ -297,7 +310,7 @@
 						<ul class="breadcrumb no-border no-radius b-b b-light" id="topli">
 						</ul>
 						<section class="scrollable">
-						<div id="loadhtml" style="margin-top: 35px;"></div> 
+							<div id="loadhtml" style="margin-top: 35px;"></div>
 						</section>
 					</section>
 				</section>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Css + JS制作的数字时钟代码</title>
+<style type="text/css">
+body{
+	 font:bold 4px Arial, Helvetica, sans-serif;
+	 margin:0;
+	 padding:0;
+	 min-width:160px;
+	 color:#bbbbbb; 
+}
+.clock {width:146px;color:#fff;padding:7px}
+#Date { font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; font-size:12px; text-align:center; text-shadow:0 0 5px #00c6ff; }
+ul { width:233px; margin:0 auto; padding:0px; list-style:none; text-align:center; }
+ul li { display:inline; font-size:2em; text-align:center; font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; text-shadow:0 0 5px #00c6ff; }
+.sz{ width:40px; display:block; float:left; height:20px; overflow: hidden;}
+.dt{ width:10px; margin-top:-2px;}
+</style>
+<script type="text/javascript" src="js/jquery/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    // Create two variable with the names of the months and days in an array
+    var monthNames = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+    var dayNames = ["周日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+    // Create a newDate() object
+    var newDate = new Date();
+    // Extract the current date from Date object
+    newDate.setDate(newDate.getDate());
+    // Output the day, date, month and year    
+    $('#Date').html(newDate.getFullYear() + '年' + (newDate.getMonth() + 1) + "月" + newDate.getDate() + "日" + "  " + dayNames[newDate.getDay()]);
+    setInterval(function() {
+        // Create a newDate() object and extract the seconds of the current time on the visitor's
+        var seconds = new Date().getSeconds();
+        // Add a leading zero to seconds value
+        $("#sec").html((seconds < 10 ? "0": "") + seconds);
+        $(".dot").fadeIn();
+        $(".dot").fadeOut();
+    },
+    1000);
+    setInterval(function() {
+        // Create a newDate() object and extract the minutes of the current time on the visitor's
+        var minutes = new Date().getMinutes();
+        // Add a leading zero to the minutes value
+        $("#min").html((minutes < 10 ? "0": "") + minutes);
+    },
+    1000);
+    setInterval(function() {
+        // Create a newDate() object and extract the hours of the current time on the visitor's
+        var hours = new Date().getHours();
+        // Add a leading zero to the hours value
+        $("#hours").html((hours < 10 ? "0": "") + hours);
+    },
+    1000);
+});
+</script>
+</head>
+<body>
+<div class="clock">
+<div id="Date"></div>
+<ul style="width:146px; height:20px;">
+	<li id="hours" class="sz">88</li>
+    <li id="point" class="sz dt">:</li>
+    <li id="min" class="sz">88</li>
+    <li id="point" class="sz dt"><span class="dot">:</span></li>
+    <li id="sec" class="sz">88</li>
+</ul>
+</div>
+</body>
+</html>
