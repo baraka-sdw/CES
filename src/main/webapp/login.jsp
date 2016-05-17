@@ -45,7 +45,7 @@
 						<td align="left"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/logo_left.png"
 							alt="Logo"></td>
-							<td align="center" style="font-weight: bold;color: gray;">登录－干部测评系统</td>
+							<td align="center" style="font-weight: bold 2px;color:#228DFF; text-shadow: 1px 3px 3px rgba(135, 206, 235, 1)">干部测评系统</td>
 						<td align="right"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/logo_left.png"
 							alt="Logo"></td>
@@ -82,7 +82,7 @@
 						<span class="add-on bg_ly"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/22.png"
 							alt="请输入验证码.."></span><input type="text" placeholder="请输入验证码" name="kaptchaValidate" value=""
-							style="height: 32px; margin-bottom: 0px;"/><img onclick="this.src='${pageContext.servletContext.contextPath }/captcha/validate.shtml?d='+new Date().getTime()" src="${pageContext.servletContext.contextPath }/captcha/validate.shtml" style="height: 32px;"/>
+							style="height: 32px; margin-bottom: 0px;"/><img title="看不清?点击换下一张"   onclick="this.src='${pageContext.servletContext.contextPath }/captcha/validate.shtml?d='+new Date().getTime()" src="${pageContext.servletContext.contextPath }/captcha/validate.shtml" style="height: 32px;"/>
 					</div>
 				</div>
 			</div>

@@ -12322,7 +12322,10 @@ body.container {
 	background-color: #fff;
 	color: #717171;
 }
-
+.bg-add {
+	background-color: #9B59B6;
+	color: #717171;
+}
 .bg-white a {
 	color: #2e3e4e;
 }

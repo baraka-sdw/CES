@@ -30,7 +30,7 @@
     <cache name="cache"  
            maxEntriesLocalHeap="10000"  
            maxEntriesLocalDisk="1000"  
-           eternal="true"  
+           eternal="false"  
            diskSpoolBufferSizeMB="20"  
            timeToIdleSeconds="0"  
            timeToLiveSeconds="0"  

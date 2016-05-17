@@ -13,10 +13,10 @@ body{
 }
 .clock {width:146px;color:#fff;padding:7px}
 #Date { font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; font-size:12px; text-align:center; text-shadow:0 0 5px #00c6ff; }
-ul { width:233px; margin:0 auto; padding:0px; list-style:none; text-align:center; }
+ul { width:233px; margin:0 auto; padding:0px; list-style:none; text-align:center;margin-left: 5px }
 ul li { display:inline; font-size:2em; text-align:center; font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; text-shadow:0 0 5px #00c6ff; }
-.sz{ width:40px; display:block; float:left; height:20px; overflow: hidden;}
-.dt{ width:10px; margin-top:-2px;}
+.sz{ width:20px; display:block; float:left; height:20px; overflow: hidden;}
+.dt{ width:5px; margin-top:-2px;}
 </style>
 <script type="text/javascript" src="js/jquery/jquery-1.8.3.js"></script>
 <script type="text/javascript">
@@ -60,7 +60,7 @@ $(document).ready(function() {
 <div class="clock">
 <div id="Date"></div>
 <ul style="width:146px; height:20px;">
-	<li id="hours" class="sz">88</li>
+	<li id="hours" class="sz" style="margin-left: 25px">88</li>
     <li id="point" class="sz dt">:</li>
     <li id="min" class="sz">88</li>
     <li id="point" class="sz dt"><span class="dot">:</span></li>

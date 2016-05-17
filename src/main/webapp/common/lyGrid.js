@@ -234,7 +234,7 @@
 
 			if(!conf.isFixed){//不固定表头
 				var tr = document.createElement('tr');
-				tr.setAttribute("style", "line-height:" + conf.tbodyHeight + ";");
+				tr.setAttribute("style", "line-height:" + conf.tbodyHeight + ";background-color: #FFFFE0");
 				thead.appendChild(tr);
 				var cn = "";
 				if (!conf.serNumber) {
@@ -289,6 +289,7 @@
 				d = (pNow - 1) *conf.pageSize;
                 var e = pNow * conf.pageSize - 1;
 			}
+			
 			currentData = new Array();//当前页数据
 			for(;d<e;d++){
 				var rowdata = json[d];
@@ -306,7 +307,12 @@
 						cn = "none";
 					}
 					var ntd_d = tr.insertCell(-1);
-					ntd_d.setAttribute("style", "text-align:center;width: 15px;display: " + cn + ";");
+					if(d%2==0){
+						ntd_d.setAttribute("style", "text-align:center;width: 15px;display: " + cn + ";background-color:#2980B9");
+					}else{
+						ntd_d.setAttribute("style", "text-align:center;width: 15px;display: " + cn + ";background-color:#16A085");
+					}
+					
 					var rowindex = tr.rowIndex;
 
 					ntd_d.innerHTML = rowindex;
@@ -315,7 +321,12 @@
 						cbk = "none";
 					}
 					var td_d = tr.insertCell(-1);
-					td_d.setAttribute("style", "text-align:center;width: 28px;display: " + cbk + ";");
+					if(d%2==0){
+						td_d.setAttribute("style", "text-align:center;width: 28px;display: " + cbk + ";background-color:#2980B9");
+					}else{
+						td_d.setAttribute("style", "text-align:center;width: 28px;display: " + cbk + ";background-color:#16A085");
+					}
+					
 					var chkbox = document.createElement("INPUT");
 					chkbox.type = "checkbox";
 					// ******** 树的上下移动需要
@@ -325,13 +336,21 @@
 					chkbox.setAttribute("_l_key", "checkbox");
 					chkbox.value = _getValueByName(rowdata, conf.checkValue);
 					chkbox.onclick = highlight.bind(this);
+					tr.onmouseover =mymouseover.bind(this);
+					tr.onmouseout =mymouseout.bind(this);
 					td_d.appendChild(chkbox); // 第一列添加复选框
 					$.each(column, function(o) {
 						if (!column[o].hide || column[o].hide == undefined) {
 							var td_o = tr.insertCell(-1);
+							
 							td_o.className=column[o].tbodyClass;
-							td_o.setAttribute("style", "text-align:" + column[o].align + ";width: " + column[o].width + ";vertical-align: middle;word-break: keep-all;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;");
-
+							if(d%2==0){
+								td_o.setAttribute("style", "text-align:" + column[o].align + ";width: " + column[o].width + ";vertical-align: middle;word-break: keep-all;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;background-color:#2980B9");
+								tr.setAttribute("id", "0");
+							}else{
+								td_o.setAttribute("style", "text-align:" + column[o].align + ";width: " + column[o].width + ";vertical-align: middle;word-break: keep-all;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;background-color:#16A085");
+								tr.setAttribute("id", "1");
+							}
 							var clm = column[o].colkey;
 							var data = CommnUtil.notEmpty(_getValueByName(rowdata, clm));
 
@@ -828,6 +847,32 @@
 			var tr = chkbox.parentNode.parentNode;
 			chkbox.checked ? setBgColor(tr) : restoreBgColor(tr);
 		};
+		
+		var mymouseover=function(){
+			var evt = arguments[0] || window.event;
+			var trs = evt.srcElement || evt.target;
+			var tr = trs.parentNode;
+			  for ( var i = 0; i < tr.childNodes.length; i++) {
+					if(tr.id==0){
+						tr.childNodes[i].style.backgroundColor = "#3498DB";
+					}else if(tr.id==1){
+						tr.childNodes[i].style.backgroundColor = "#1ABC9C";
+					}
+				}
+		}
+		var mymouseout=function(){
+			var evt = arguments[0] || window.event;
+			var trs = evt.srcElement || evt.target;
+			var tr = trs.parentNode;
+		     for ( var i = 0; i < tr.childNodes.length; i++) {
+				if(tr.id==0){
+					tr.childNodes[i].style.backgroundColor = "#2980B9";
+				}else if(tr.id==1){
+					tr.childNodes[i].style.backgroundColor = "#16A085";
+				}
+			}
+		}
+		
 		var selectRow = function(pagId) {
 			var ck = getSelectedCheckbox(pagId);
 			 var json = _getValueByName(returnData, conf.records);
@@ -841,12 +886,12 @@
 			 return ret;
 		};
 		var trClick = function() { // 设置行的背景色 兼容性问题很大
-			/*
-			 * var evt = arguments[0] || window.event; var tr = evt.srcElement ||
-			 * evt.currentTarget; var chkbox = getChkBox(tr);
-			 * if(chkbox.checked){ chkbox.checked = false; restoreBgColor(tr);
-			 * }else{ chkbox.checked=true; setBgColor(tr); }
-			 */
+			
+			  var evt = arguments[0] || window.event; var tr = evt.srcElement ||
+			  evt.currentTarget; var chkbox = getChkBox(tr);
+			  if(chkbox.checked){ chkbox.checked = false; restoreBgColor(tr);
+			  }else{ chkbox.checked=true; setBgColor(tr); }
+			 
 		};
 		var checkboxbind = function() { // 全选/反选
 			var evt = arguments[0] || window.event;
@@ -937,12 +982,27 @@
 		};
 		var restoreBgColor = function(tr) {// 不勾选设置背景色
 			for ( var i = 0; i < tr.childNodes.length; i++) {
-				tr.childNodes[i].style.backgroundColor = "";
+				if(tr.id==2){
+					tr.childNodes[i].style.backgroundColor = "#2980B9";
+				}else if(tr.id==3){
+					tr.childNodes[i].style.backgroundColor = "#16A085";
+				}
+			}
+			if(tr.id==2){
+				tr.setAttribute("id","0")
+			}else if(tr.id==3){
+				tr.setAttribute("id","1")
 			}
 		};
 		var setBgColor = function(tr) { // 设置背景色
+			if(tr.id==0){
+				tr.setAttribute("id","2")
+			}else if(tr.id==1){
+				tr.setAttribute("id","3")
+			}
+			
 			for ( var i = 0; i < tr.childNodes.length; i++) {
-				tr.childNodes[i].style.backgroundColor = "#D4D4D4";
+				tr.childNodes[i].style.backgroundColor = "#F1C40F";
 			}
 		};
 		function $A(arrayLike) { // 数值的填充

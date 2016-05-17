@@ -22,8 +22,6 @@
 				</td>
 			</tr>
 		</table>
-<!-- 		<iframe style="zoom:30%" width="1200"   height="600" scrolling="no" frameborder="0" -->
-<!-- 							allowtransparency="true" src="http://js.itivy.com/CSS3Clock/index.html"> </iframe> -->
 	</div>
 </div>
 

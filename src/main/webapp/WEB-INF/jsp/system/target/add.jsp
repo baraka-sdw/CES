@@ -29,7 +29,7 @@ label[class^="btn btn-default"]{
 		<div class="panel-body">
 		
 			<div class="form-group">
-				<label class="col-sm-3 control-label">指标名称</label>
+				<label class="col-sm-3 control-label">一级指标名称</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control checkacc"
 						placeholder="请输入指标名称" name="targetFormMap.name" id="name">

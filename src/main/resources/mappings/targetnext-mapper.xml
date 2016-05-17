@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdw.mapper.TargetNextMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
+		/> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+	<!-- 以下与实体类的中字段一致 -->
+	<sql id="selectId">
+		 t.id,
+		 t.target,
+		(select target from targetone o where o.id=t.target)name,
+		t.targetName,
+		t.weight
+	</sql>
+	<select id="findTargetNextPage" resultType="com.sdw.entity.TargetNextFormMap">
+		select
+		<include refid="selectId" />
+		from targetnext t
+		left join targetone a on a.id=t.target
+		where 1 = 1
+		<if test="target != null and target != ''">
+		and a.target like '%${target}%'
+		</if>
+		<if test="column != null">
+          order by ${column} ${sort}
+        </if>
+	</select>
+</mapper>

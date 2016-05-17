@@ -115,8 +115,8 @@
 					<section class="dropdown-menu aside-xl">
 						<section class="panel bg-white">
 							<header class="panel-heading b-light bg-light">
-								<strong>You have <span class="count"
-									style="display: inline;">3</span> notifications
+								<strong>你有 <span class="count"
+									style="display: inline;">3</span> 个新通知
 								</strong>
 							</header>
 							<div class="list-group list-group-alt animated fadeInRight">
@@ -124,27 +124,25 @@
 									style="display: block;"><span
 									class="pull-left thumb-sm text-center"><i
 										class="fa fa-envelope-o fa-2x text-success"></i></span><span
-									class="media-body block m-b-none">Sophi sent you a email<br>
-										<small class="text-muted">1 minutes ago</small></span></a> <a
+									class="media-body block m-b-none">张三给你发了一封邮件<br>
+										<small class="text-muted">1小时前</small></span></a> <a
 									href="index.shtml#" class="media list-group-item"> <span
 									class="pull-left thumb-sm"> <img
 										src="${ctx}/notebook/notebook_files/avatar.jpg"
 										alt="John said" class="img-circle">
-								</span> <span class="media-body block m-b-none"> Use awesome
-										animate.css<br> <small class="text-muted">10
-											minutes ago</small>
+								</span> <span class="media-body block m-b-none"> 你有一个任务需要完成<br> <small class="text-muted">10
+											分钟 前</small>
 								</span>
 								</a> <a href="index.shtml#" class="media list-group-item"> <span
-									class="media-body block m-b-none"> 1.0 initial released<br>
-										<small class="text-muted">1 hour ago</small>
+									class="media-body block m-b-none"> 干部测评系统1.1版已发布<br>
+										<small class="text-muted">2小时前</small>
 								</span>
 								</a>
 							</div>
 							<footer class="panel-footer text-sm">
 								<a href="index.shtml#" class="pull-right"><i
 									class="fa fa-cog"></i></a> <a href="index.shtml#notes"
-									data-toggle="class:show animated fadeInRight">See all the
-									notifications</a>
+									data-toggle="class:show animated fadeInRight">查看所有通知</a>
 							</footer>
 						</section>
 					</section></li>
@@ -225,14 +223,21 @@
 														<i class="fa fa-fighter-jet icon"> <b
 															class="bg-success"></b>
 														</i>
-													</c:if> <c:if test="${s.index==5}">
+													</c:if> 
+													<c:if test="${s.index==5}">
 														<i class="fa fa-umbrella icon"> <b class="bg-warning"></b>
 														</i>
-													</c:if> <c:if test="${s.index==6}">
+													</c:if> 
+													<c:if test="${s.index==6}">
 														<i class="fa fa-suitcase icon"> <b class="bg-dark"></b>
 														</i>
-
-													</c:if> <span class="pull-right"> <i
+													</c:if> 
+													<c:if test="${s.index==7}">
+														<i class="fa fa-cutlery icon"> <b class="bg-add"></b>
+														</i>
+													</c:if> 
+													
+													<span class="pull-right"> <i
 														class="fa fa-angle-down text"></i> <i
 														class="fa fa-angle-up text-active"></i>
 												</span> <span>${key.name}</span>
@@ -322,6 +327,5 @@
 	</section>
 	<!-- Bootstrap -->
 	<div id="flotTip" style="display: none; position: absolute;"></div>
-
 </body>
 </html>

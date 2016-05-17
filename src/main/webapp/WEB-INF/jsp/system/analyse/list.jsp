@@ -161,7 +161,7 @@ $.ajax({
 })
 </script>
 
-   <div class="m-b-md">
+   <div class="m-b-md" >
 		<form class="form-inline" role="form" id="searchForm"
 			name="searchForm">
 			<div class="form-group">
