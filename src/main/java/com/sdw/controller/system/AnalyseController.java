@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sdw.mapper.AnalyseMapper;
+import com.sdw.mapper.TargetMapper;
 import com.sdw.plugin.PageView;
 import com.sdw.util.Common;
 import com.sdw.controller.index.BaseController;
 import com.sdw.entity.AnalyseFormMap;
 import com.sdw.entity.CardeFormMap;
+import com.sdw.entity.TargetFormMap;
 
 /**
  * 
@@ -25,13 +27,17 @@ import com.sdw.entity.CardeFormMap;
 public class AnalyseController extends BaseController{
 	@Inject
 	private AnalyseMapper analyseMapper;
+	@Inject
+	private TargetMapper  targetMapper;
 	
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
+		TargetFormMap targetFormMap = getFormMap(TargetFormMap.class);
+		model.addAttribute("target",  targetMapper.findTarget(targetFormMap));
 		model.addAttribute("res", findByRes());
 		return Common.BACKGROUND_PATH + "/system/analyse/list";
 	}
-	
+
 	@RequestMapping("addUI")
 	public String addUI(Model model) throws Exception {
 		return Common.BACKGROUND_PATH + "/system/analyse/add";
@@ -41,6 +47,8 @@ public class AnalyseController extends BaseController{
 	@RequestMapping("findCollect")
 	public List<AnalyseFormMap> findCollect() throws Exception {
 		AnalyseFormMap analyseFormMap = getFormMap(AnalyseFormMap.class);
+		String question_name=getPara("question_name");
+		analyseFormMap.put("question_name", question_name);
         return  analyseMapper.findCollect(analyseFormMap);
 	}
 

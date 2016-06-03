@@ -18,6 +18,9 @@ $(function() {
 			colkey : "weight",
 			name : "权重",
 			isSort:true,
+		},{
+			colkey : "description",
+			name : "描述",
 		}],
 		jsonUrl : rootPath + '/targetnext/findByPage.shtml',
 		checkbox : true,

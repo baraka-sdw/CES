@@ -9,11 +9,27 @@
 	<!-- 以下与实体类的中字段一致 -->
 	<sql id="selectId">
 		id,
-		name,
+		question_name,
 		target1,
 		target2,
 		target3,
-		target4
+		target4,
+		target5,
+		target6,
+		target7,
+		target8,
+		target9,
+		target10,
+		weight1,
+		weight2,
+		weight3,
+		weight4,
+		weight5,
+		weight6,
+		weight7,
+		weight8,
+		weight9,
+		weight10
 	</sql>
 
 	<select id="findTargetPage" resultType="com.sdw.entity.TargetFormMap">
@@ -21,10 +37,9 @@
 		<include refid="selectId" />
 		from target
 		where 1 = 1
-		<if test="name != null and name != ''">
-		and name like '%${name}%'
+		<if test="question_name != null and question_name != ''">
+		and question_name like '%${question_name}%'
 		</if>
-		
 		<if test="column != null">
           order by ${column} ${sort}
         </if>

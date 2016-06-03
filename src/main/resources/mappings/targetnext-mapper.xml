@@ -12,7 +12,8 @@
 		 t.target,
 		(select target from targetone o where o.id=t.target)name,
 		t.targetName,
-		t.weight
+		t.weight,
+		t.description 
 	</sql>
 	<select id="findTargetNextPage" resultType="com.sdw.entity.TargetNextFormMap">
 		select
@@ -27,4 +28,30 @@
           order by ${column} ${sort}
         </if>
 	</select>
+	
+	<select id="findTargetNext" resultType="com.sdw.entity.TargetNextFormMap">
+	    select
+		<include refid="selectId" />
+		from targetnext t
+	</select>
+	
+	<select id="findTargetNextByTarget" resultType="com.sdw.entity.TargetNextFormMap">
+	    select
+		<include refid="selectId" />
+		from targetnext t
+		where 1=1
+		<if test="target != null and target != ''">
+		and t.target=${target}
+		</if>
+	</select> 
+	
+	<select id="findTargetNextByTargetName" resultType="com.sdw.entity.TargetNextFormMap">
+	    select
+		<include refid="selectId" />
+		from targetnext t
+		where 1=1
+		<if test="targetName != null and targetName != ''">
+		and t.targetName='${targetName}'
+		</if>
+	</select> 
 </mapper>

@@ -22,7 +22,7 @@
 	 				}
 	 			});
 	 		},rules : {
-	 			"targetFormMap.name" : {
+	 			"targetFormMap.question_name" : {
 					required : true,
 				},
 				"targetFormMap.target1":{
@@ -40,7 +40,7 @@
 	 		},
 	 		messages : {
 	 			"targetFormMap.name": {
-					required : "请输入指标名称",
+					required : "请输入问卷名称",
 				},"targetFormMap.target1":{
 					required :"请输入指标1名称",
 				},"targetFormMap.target2":{

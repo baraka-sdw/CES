@@ -1,5 +1,8 @@
 package com.sdw.controller.system;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -9,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sdw.mapper.TargetMapper;
+import com.sdw.mapper.TargetNextMapper;
+import com.sdw.mapper.TargetOneMapper;
 import com.sdw.plugin.PageView;
 import com.sdw.util.Common;
 import com.sdw.annotation.SystemLog;
 import com.sdw.controller.index.BaseController;
 import com.sdw.entity.TargetFormMap;
+import com.sdw.entity.TargetNextFormMap;
+import com.sdw.entity.TargetOneFormMap;
 
 /**
  * 
@@ -24,6 +31,10 @@ import com.sdw.entity.TargetFormMap;
 public class TargetController extends BaseController{
 	@Inject
 	private TargetMapper targetMapper;
+	@Inject
+	private TargetOneMapper targetOneMapper;
+	@Inject
+	private TargetNextMapper targetNextMapper;
 	
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
@@ -33,6 +44,17 @@ public class TargetController extends BaseController{
 	
 	@RequestMapping("addUI")
 	public String addUI(Model model) throws Exception {
+		TargetNextFormMap targetNextFormMap1 = getFormMap(TargetNextFormMap.class);
+		TargetOneFormMap targetOneFormMap = getFormMap(TargetOneFormMap.class);
+		List<TargetOneFormMap> list=targetOneMapper.findTargetOne(targetOneFormMap);
+		List target=new ArrayList();
+		for (TargetOneFormMap targetOneFormMap2 : list) {
+			targetNextFormMap1.put("target", targetOneFormMap2.getInt("id"));
+			List<TargetNextFormMap> targetnext=targetNextMapper.findTargetNextByTarget(targetNextFormMap1);
+			target.add(targetnext);
+		}
+		model.addAttribute("targetone",  targetOneMapper.findTargetOne(targetOneFormMap));
+		model.addAttribute("targetnext", target);
 		return Common.BACKGROUND_PATH + "/system/target/add";
 	}
 	
@@ -48,6 +70,10 @@ public class TargetController extends BaseController{
 	
 	@RequestMapping("editUI")
 	public String editUI(Model model) throws Exception {
+		TargetNextFormMap targetNextFormMap = getFormMap(TargetNextFormMap.class);
+		TargetOneFormMap targetOneFormMap = getFormMap(TargetOneFormMap.class);
+		model.addAttribute("targetone",  targetOneMapper.findTargetOne(targetOneFormMap));
+		model.addAttribute("targetnext",  targetNextMapper.findTargetNext(targetNextFormMap));
 		String id = getPara("id");
 		if(Common.isNotEmpty(id)){
 			model.addAttribute("target", targetMapper.findbyFrist("id", id, TargetFormMap.class));

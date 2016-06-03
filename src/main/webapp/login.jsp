@@ -12,8 +12,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"	href="${pageContext.servletContext.contextPath}/admin_files/min.css">
 <link rel="stylesheet"	href="${pageContext.servletContext.contextPath }/admin_files/login.css">
-<link	href="${pageContext.servletContext.contextPath }/admin_files/css.css"	rel="stylesheet" type="text/css">
+<link rel="stylesheet"	href="${pageContext.servletContext.contextPath }/css/image.css">
+<link	href="${pageContext.servletContext.contextPath }/css/image.css"	rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${pageContext.servletContext.contextPath }/js/jquery/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath }/js/common.js"></script>
 
 <!--[if lt IE 9]> 
 	<script src="${ctx}/js/jquery/ie/html5shiv.js"></script> 
@@ -32,11 +34,11 @@
     }
 </style>
 </head>
-<body onload="javascript:to_top()" 
-	style="background-image: url('${pageContext.servletContext.contextPath }/admin_files/9.jpg');margin-top:0px;background-repeat:no-repeat;background-size: 100% auto;">
-	<div id="loginbox" style="padding-top: 10%;">
+<body onload="javascript:to_top()">
+    <div style="background-image: url('${pageContext.servletContext.contextPath }/admin_files/02.jpg');width: 100%; height: auto;position: absolute;" id="bg"></div>
+	<div id="loginbox" style="padding-top: 150px">
 		<form id="loginform" name="loginform" class="form-vertical"
-			style="background-color: rgba(0, 0, 0, 0.5) !important; background: #000; filter: alpha(opacity = 50); *background: #000; *filter: alpha(opacity = 50); /*黑色透明背景结束*/ color: #FFF; bottom: 0px; right: 0px; border: 1px solid #000;"
+			style="background-color: rgba(0, 0, 0, 0.5) !important; background: #000; filter: alpha(opacity = 50); *background: #000; *filter: alpha(opacity = 50); /*黑色透明背景结束*/ color: #FFF; bottom: 0px; right: 0px; border: 1px solid #000;z-index: 100"
 			action="${pageContext.servletContext.contextPath }/login.shtml"
 			method="post">
 			<div class="control-group normal_text">
@@ -53,14 +55,15 @@
 				</table>
 
 			</div>
-			<div id="error" style="width: 100%; margin-top: 2px;">123</div>
-			<div class="control-group">
+			
+			<div id="error" style="width: 100%;"></div>
+			<div class="control-group" style="margin-top: 20px">
 				<div class="controls">
 					<div class="main_input_box">
-						<span class="add-on bg_ly" style="background: #28b779"><img
+						<span class="add-on bg_ly" style="background: #28b779;"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/account_1.png"
 							alt="请输入账号.."></span><input type="text" placeholder="请输入用户名" name="username" value="sdw"
-							style="height: 32px; margin-bottom: 0px;"/>
+							style="height: 32px;margin-bottom:25px"/>
 					</div>
 				</div>
 			</div>
@@ -71,7 +74,7 @@
 						<span class="add-on bg_ly"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/lock_1.png"
 							alt="请输入密码.."></span><input type="password" placeholder="请输入密码" name="password" value="123456"
-							style="height: 32px; margin-bottom: 0px;"/>
+							style="height: 32px; margin-bottom: 25px;"/>
 					</div>
 				</div>
 			</div>
@@ -82,7 +85,7 @@
 						<span class="add-on bg_ly"><img
 							src="${pageContext.servletContext.contextPath }/admin_files/22.png"
 							alt="请输入验证码.."></span><input type="text" placeholder="请输入验证码" name="kaptchaValidate" value=""
-							style="height: 32px; margin-bottom: 0px;"/><img title="看不清?点击换下一张"   onclick="this.src='${pageContext.servletContext.contextPath }/captcha/validate.shtml?d='+new Date().getTime()" src="${pageContext.servletContext.contextPath }/captcha/validate.shtml" style="height: 32px;"/>
+							style="height: 32px; margin-bottom:25px"/><img title="看不清?点击换下一张"   onclick="this.src='${pageContext.servletContext.contextPath }/captcha/validate.shtml?d='+new Date().getTime()" src="${pageContext.servletContext.contextPath }/captcha/validate.shtml" style="height: 32px;margin-left: 240px;margin-top: -57px"/>
 					</div>
 				</div>
 			</div>
@@ -113,7 +116,17 @@
 		        top.location.href=location.href;
 		    }
 		}
+		
+	    function image() {
+	    	var images=new Array("02.jpg","03.jpg","06.jpg","9.jpg");
+	    	 $("#bg").fadeTo(6000,0.15);
+			 $("#bg").css("background-image","url(/CES/admin_files/"+images[Math.floor(Math.random()*3+1)]+")");
+			 $("#bg").fadeTo(6000,1);
+			 
+	    }
+	    $(document).ready(function(){
+	    	setInterval(image,6000);
+	    })
 	</script>
-	
 </body>
 </html>

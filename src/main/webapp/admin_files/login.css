@@ -39,7 +39,7 @@ hr{ border-top-color:#dadada;}
 .bg_lv{ background:#603bbc;}
 .bg_lh{ background:#b6b3b3;}
 
-body { background-color:#2E363F;    padding: 0;    margin-top:10%;}
+body { background-color:#2E363F;    padding: 0;}
 #logo, #loginbox {    width: 32%;    margin-left: auto;    margin-right: auto;    position: relative;}
 #logo img {  margin: 0 auto;    display: block;}
 #loginbox { overflow: hidden !important;    text-align: left;    position: relative; }

@@ -7,6 +7,9 @@ import com.sdw.entity.TargetNextFormMap;
 import com.sdw.mapper.base.BaseMapper;
 
 public interface TargetNextMapper extends BaseMapper{
-	public List<TargetFormMap> findTargetNextPage(TargetNextFormMap targetNextFormMap);
-//	public List<TargetFormMap> findTargetNext(TargetFormMap indexFormMap);
+	public List<TargetNextFormMap> findTargetNextPage(TargetNextFormMap targetNextFormMap);
+	public List<TargetNextFormMap> findTargetNext(TargetNextFormMap targetNextFormMap);
+	public  List<TargetNextFormMap> findTargetNextByTarget(TargetNextFormMap targetNextFormMap);
+	public  TargetNextFormMap findTargetNextByTargetName(TargetNextFormMap targetNextFormMap);
+	
 }

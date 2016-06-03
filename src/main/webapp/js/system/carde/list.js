@@ -41,7 +41,7 @@ $(function() {
 		}, {
 			colkey : "mark",
 			name : "简介"
-		} ],
+		}],
 		jsonUrl : rootPath + '/carde/findByPage.shtml',
 		checkbox : true,
 		serNumber : true

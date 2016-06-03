@@ -10,13 +10,24 @@
 	<sql id="selectId">
 	  c.id,
 	  count(c.id) total,
-	  c.carde,
-	  (select cardename from carde where id=c.carde) cardename,
-	  avg(c.target1) target1,
-	  avg(c.target2) target2,
-	  avg(c.target3) target3,
-	  avg(c.target4) target4,
-	  target1+target2+target3+target4 as target
+	  c.carde cardename,
+	  (select question_name from target where id=c.target) question_name,
+	  c.target1,
+	  c.target2,
+	  c.target3,
+	  c.target4,
+	  c.target5,
+	  c.target6,
+	  c.target7,
+	  c.target8,
+	  c.target9,
+	  c.target10,
+	  ((c.target1*c.weight1+c.target2*c.weight2+c.target3*c.weight3+c.target4*c.weight4+c.target5*c.weight5+
+	  c.target6*c.weight6+c.target7*c.weight7+c.target8*c.weight8+c.target9*c.weight9+c.target10*c.weight10)
+	  /(c.weight1+c.weight2+c.weight3+c.weight4+c.weight5+c.weight6+c.weight7+c.weight8+c.weight9+c.weight10))
+	   as target
+	   
+	  
 	</sql>
 
 	<select id="findCollectPage" resultType="com.sdw.entity.AnalyseFormMap">
@@ -26,18 +37,23 @@
 		left join carde a on a.id=c.carde
 		where 1 = 1
 		<if test="cardename != null and cardename != ''">
-		and a.cardename like '%${cardename}%'
+		and c.carde like '%${cardename}%'
 		</if>
-		<if test="column != null">
+        group by c.carde,question_name
+        <if test="column != null">
           order by ${column} ${sort}
         </if>
-        group by c.carde
 	</select>
 	
 	<select id="findCollect" resultType="com.sdw.entity.AnalyseFormMap">
 	    select
 		<include refid="selectId" />
 		from collect c
+		left join target a on a.id=c.target
+		where 1=1
+		<if test="question_name != null and question_name != ''">
+		and a.question_name=#{question_name}
+		</if>
 		group by c.carde
 	</select>
 	

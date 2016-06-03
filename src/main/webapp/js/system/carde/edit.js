@@ -28,7 +28,8 @@
 				},
 				"cardeFormMap.age":{
 					required : true,
-					digits:true
+					digits:true,
+					rangelength:[30,60]
 				},
 				"cardeFormMap.company":{
 					required : true
@@ -54,6 +55,7 @@
 				},"cardeFormMap.age":{
 					required :"年龄不能为空",
 					digits: "年龄只能输入数字",
+					rangelength: $.validator.format("年龄长度在 {0} 到 {1} 之间")
 					
 				},"cardeFormMap.company":{
 					required :"单位不能为空"

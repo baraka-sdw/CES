@@ -7,24 +7,17 @@ $(function() {
 		l_column : [ {
 			colkey : "id",
 			name : "id",
-			width:'40px',
+			width:'55px',
 			isSort:true,
 		},{
-			colkey : "object",
-			name : "参评对象",
-		},{
-			colkey : "cardename",
+			colkey : "carde",
 			name : "干部姓名",
 			isSort:true,
 		},{
-			colkey : "name",
-			name : "指标名称",
+			colkey : "question_name",
+			name : "问卷名称",
 			isSort:true,
 		},{
-			colkey : "evaluateCode",
-			name : "测评代码",
-			isSort:true,
-		}, {
 			colkey : "evaluateName",
 			name : "测评名称"
 		}, {
@@ -45,6 +38,36 @@ $(function() {
 		},{
 			colkey : "target4",
 			name : "指标4分数",
+			width : '40px',
+			isSort:true,
+		},{
+			colkey : "target5",
+			name : "指标5分数",
+			width : '40px',
+			isSort:true,
+		},{
+			colkey : "target6",
+			name : "指标6分数",
+			width : '40px',
+			isSort:true,
+		},{
+			colkey : "target7",
+			name : "指标7分数",
+			width : '40px',
+			isSort:true,
+		},{
+			colkey : "target8",
+			name : "指标8分数",
+			width : '40px',
+			isSort:true,
+		},{
+			colkey : "target9",
+			name : "指标9分数",
+			width : '40px',
+			isSort:true,
+		},{
+			colkey : "target10",
+			name : "指标10分数",
 			width : '40px',
 			isSort:true,
 		} ],

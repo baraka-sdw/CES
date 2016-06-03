@@ -66,7 +66,15 @@ label[class^="btn btn-default"]{
 						placeholder="请输入权重" name="targetNextFormMap.weight" id="weight"
 						value="${targetnext.weight }">
 				</div>
-			</div>			
+			</div>
+			
+			 <div class="form-group">
+				<label class="col-sm-1 control-label">指标描述</label>
+				<div class="col-sm-4">
+				    <textarea class="form-control checkacc" rows="3" placeholder="请输入对指标的描述"
+				    name="targetNextFormMap.description" id="description" value="${targetnext.description }"></textarea>
+				</div>
+			</div>   	
 
 		</div>
 		<div class="line line-dashed line-lg pull-in"></div>

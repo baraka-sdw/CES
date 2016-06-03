@@ -36,6 +36,17 @@
 	    select
 		<include refid="selectId" />
 		from carde
+		group by department
 	</select>
+	
+      <select id="findCardeByDp" resultType="com.sdw.entity.CardeFormMap">
+	    select
+		<include refid="selectId" />
+		from carde
+		where 1=1
+		<if test="department != null and department != ''">
+		and department like '%${department}%'
+		</if>
+	</select> 
 	
 </mapper>

@@ -3,5 +3,7 @@ encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/system/analyse/list.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/system/question/question.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/system/question/question2.jsp=UTF-8
+encoding//src/main/webapp/css/image.css=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

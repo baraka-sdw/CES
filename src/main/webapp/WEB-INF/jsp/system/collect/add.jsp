@@ -4,8 +4,6 @@
 <html>
 <head>
 <%@include file="/common/common.jspf" %>
-<script type="text/javascript" src="${ctx}/js/system/collect/add.js"></script>
-
 <style type="text/css">
 .col-sm-3 {
 	width: 15%;

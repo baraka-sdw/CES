@@ -1,5 +1,7 @@
 package com.sdw.controller.system;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import com.sdw.plugin.PageView;
 import com.sdw.util.Common;
 import com.sdw.annotation.SystemLog;
 import com.sdw.controller.index.BaseController;
+import com.sdw.entity.AnalyseFormMap;
 import com.sdw.entity.CardeFormMap;
 import com.sdw.entity.RoleFormMap;
 import com.sdw.entity.UserFormMap;
@@ -56,6 +59,14 @@ public class CardeController extends BaseController{
 			model.addAttribute("carde", cardeMapper.findbyFrist("id", id, CardeFormMap.class));
 		}
 		return Common.BACKGROUND_PATH + "/system/carde/edit";
+	}
+	@ResponseBody
+	@RequestMapping("findByDepartment")
+	public List<CardeFormMap> findByDepartment() throws Exception {
+		CardeFormMap cardeFormMap = getFormMap(CardeFormMap.class);
+		String department = getPara("department");
+		cardeFormMap.put("department", department);
+		return  cardeMapper.findCardeByDp(cardeFormMap);
 	}
 	
 	@ResponseBody

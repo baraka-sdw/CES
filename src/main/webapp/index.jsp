@@ -168,7 +168,7 @@
 				<li class="dropdown"><a href="index.shtml#"
 					class="dropdown-toggle" data-toggle="dropdown"> <span
 						class="thumb-sm avatar pull-left"> <img
-							src="${ctx}/notebook/notebook_files/avatar.jpg">
+							src="${ctx}/notebook/notebook_files/${userFormMap.photo}">
 					</span> ${userFormMap.accountName} <b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu animated fadeInRight">

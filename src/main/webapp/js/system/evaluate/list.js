@@ -13,15 +13,17 @@ $(function() {
 			colkey : "evaluateCode",
 			name : "测评代码",
 			isSort:true,
+			width : '60px',
+			
 		},{
 			colkey : "evaluateName",
 			name : "测评名称",
-		},{
-			colkey : "target",
-			name : "指标",
+			width : '130px',
 		},{
 			colkey : "object",
 			name : "参评对象",
+			width : '130px',
+			
 		}, {
 			colkey : "batch",
 			name : "批次",

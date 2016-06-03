@@ -9,15 +9,29 @@
 	<!-- 以下与实体类的中字段一致 -->
 	<sql id="selectId">
 		 c.id,
-	    (select object from evaluate  where id=c.evaluate) object,
-		(select cardename from carde where id=c.carde) cardename,
-		(select evaluateName from evaluate where id=c.evaluate) evaluateName,
-		(select evaluateCode from evaluate where id=c.evaluate)evaluateCode,
-		(select name from target where id=c.name) name,
+		c.carde,
+		(select question_name from target where id=c.target) question_name,
+		(select evaluateName from evaluate where id=c.evaluate)evaluateName,
 		c.target1,
 		c.target2,
 		c.target3,
-		c.target4
+		c.target4,
+		c.target5,
+		c.target6,
+		c.target7,
+		c.target8,
+		c.target9,
+		c.target10,
+		c.weight1,
+		c.weight2,
+		c.weight3,
+		c.weight4,
+		c.weight5,
+		c.weight6,
+		c.weight7,
+		c.weight8,
+		c.weight9,
+		c.weight10
 	</sql>
 
 	<select id="findCollectPage" resultType="com.sdw.entity.CollectFormMap">
@@ -26,19 +40,16 @@
 		from collect c
 		left join evaluate a on a.id=c.evaluate
 		left join carde b on b.id=c.carde
-		left join target d on d.id=c.name
+		left join target d on d.id=c.target
 		where 1 = 1
 		<if test="cardename != null and cardename != ''">
-		and b.cardename like '%${cardename}%'
-		</if>
-		<if test="object != null and object != ''">
-		and a.object like '%${object}%'
-		</if>
-		<if test="name != null and name != ''">
-		and d.name like '%${name}%'
+		and c.carde like '%${cardename}%'
 		</if>
 		<if test="evaluateName != null and evaluateName != ''">
 		and a.evaluateName like '%${evaluateName}%'
+		</if>
+		<if test="question_name != null and question_name != ''">
+		and d.question_name like '%${question_name}%'
 		</if>
 		<if test="column != null">
           order by ${column} ${sort}

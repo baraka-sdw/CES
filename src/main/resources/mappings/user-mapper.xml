@@ -19,7 +19,8 @@
 		description,
 		locked,
 		credentialsSalt,
-		createTime
+		createTime,
+		photo
 	</sql>
 
 	<select id="findUserPage" resultType="com.sdw.entity.UserFormMap">

@@ -7,10 +7,12 @@ $(function() {
 		l_column : [ {
 			colkey : "id",
 			name : "id",
+			width : '40px',
 			isSort:true,
 		}, {
-			colkey : "name",
-			name : "指标名称",
+			colkey : "question_name",
+			name : "问卷调查名称",
+			width : '160px',
 		},{
 			colkey : "target1",
 			name : "指标1",
@@ -23,7 +25,25 @@ $(function() {
 		}, {
 			colkey : "target4",
 			name : "指标4"
-		} ],
+		}, {
+			colkey : "target5",
+			name : "指标5"
+		}, {
+			colkey : "target6",
+			name : "指标6"
+		}, {
+			colkey : "target7",
+			name : "指标7"
+		},{
+			colkey : "target8",
+			name : "指标8"
+		}, {
+			colkey : "target9",
+			name : "指标9"
+		}, {
+			colkey : "target10",
+			name : "指标10"
+		}   ],
 		jsonUrl : rootPath + '/target/findByPage.shtml',
 		checkbox : true,
 		serNumber : true
@@ -53,7 +73,7 @@ function editAccount() {
 	pageii = layer.open({
 		title : "编辑",
 		type : 2,
-		area : [ "600px", "80%" ],
+		area : [ "350px", "60%" ],
 		content : rootPath + '/target/editUI.shtml?id=' + cbox
 	});
 }
@@ -61,7 +81,7 @@ function addAccount() {
 	pageii = layer.open({
 		title : "新增",
 		type : 2,
-		area : [ "600px", "80%" ],
+		area : [ "350px", "60%" ],
 		content : rootPath + '/target/addUI.shtml'
 	});
 }

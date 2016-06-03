@@ -12,19 +12,11 @@
 					class="input-medium ui-autocomplete-input" id="cardename"
 					name="collectFormMap.cardename">
 			</div>
-			
 			<div class="form-group">
 				<label class="control-label"> <span
-					class="h4 font-thin v-middle">指标名称:</span></label> <input
-					class="input-medium ui-autocomplete-input" id="name"
-					name="collectFormMap.name">
-			</div>
-			
-			<div class="form-group">
-				<label class="control-label"> <span
-					class="h4 font-thin v-middle">参评对象:</span></label> <input
-					class="input-medium ui-autocomplete-input" id="object"
-					name="collectFormMap.object">
+					class="h4 font-thin v-middle">问卷名称:</span></label> <input
+					class="input-medium ui-autocomplete-input" id="question_name"
+					name="collectFormMap.question_name">
 			</div>
 			
 			<div class="form-group">

@@ -53,6 +53,15 @@ public class TargetNextController extends BaseController{
 		return "success";
 	}
 	
+	@ResponseBody
+	@RequestMapping("findTargetNextByTargetName")
+	public TargetNextFormMap findTargetNextByTargetName() throws Exception {
+		TargetNextFormMap targetNextFormMap = getFormMap(TargetNextFormMap.class);
+		String targetName = getPara("targetName");
+		targetNextFormMap.put("targetName", targetName);
+		return targetnextMapper.findTargetNextByTargetName(targetNextFormMap);
+	}
+	
 	@RequestMapping("editUI")
 	public String editUI(Model model) throws Exception {
 		TargetOneFormMap targetOneFormMap = getFormMap(TargetOneFormMap.class);

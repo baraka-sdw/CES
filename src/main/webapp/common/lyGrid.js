@@ -29,7 +29,7 @@
 			pagecode : '10',// 分页时，最多显示几个页码
 			async : false, // 默认为同步
 			data : '', // 发送给后台的数据 是json数据 例如{nama:"a",age:"100"}....
-			pageSize : 10, // 每页显示多少条数据
+			pageSize : '7', // 每页显示多少条数据
 			checkbox : false,// 是否显示复选框
 			checkValue : 'id', // 当checkbox为true时，需要设置存放checkbox的值字段 默认存放字段id的值
 			treeGrid : {
