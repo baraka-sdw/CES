@@ -4,9 +4,10 @@
 <html>
 <head>
 <%@include file="/common/common.jspf"%>
-<script type="text/javascript" src="${ctx}/js/system/user/add.js">
-	
-</script>
+<script type="text/javascript" src="${ctx}/js/system/user/add.js"></script>
+<script type="text/javascript" src="${ctx}/js/fileinput.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/fileinput_locale_zh.js"></script>
+<link href="${ctx}/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 <style type="text/css">
 .col-sm-3 {
 	width: 15%;
@@ -83,6 +84,14 @@ label[class^="btn btn-default"] {
 						name="userFormMap.description" id="description">
 				</div>
 			</div>
+			<div class="line line-dashed line-lg pull-in"></div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">选择头像</label>
+				<div class="col-sm-9">
+			<input id="file-0a" class="file" type="file" multiple data-min-file-count="3">
+			    </div>
+			</div>
+			
 		</div>
 		<footer class="panel-footer text-right bg-light lter">
 		<button type="submit" class="btn btn-success btn-s-xs">提交</button>

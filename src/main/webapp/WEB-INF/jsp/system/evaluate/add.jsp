@@ -74,18 +74,6 @@ label[class^="btn btn-default"] {
 				</div>
 			</div>
             
-			<div class="form-group">
-				<label class="col-sm-3 control-label">指标</label>
-				<div class="col-sm-9">
-
-					<select class="input-xlarge btn-group m-r form-control"
-						name="evaluateFormMap.target">
-						<c:forEach items="${target}" var="key">
-							<option value="${key.id}">${key.name}</option>
-						</c:forEach>
-					</select>
-				</div>
-			</div>
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label">参评对象</label>
